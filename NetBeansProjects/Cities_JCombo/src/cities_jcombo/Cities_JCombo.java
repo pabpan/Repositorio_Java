@@ -9,14 +9,15 @@ public class Cities_JCombo extends JFrame {
     final JPanel panel = new JPanel();
     //final GridLayout layout = new GridLayout(0, 3);
     JLabel etiqueta_roja = new JLabel("Select your city");
-    final String ciudades[] = {"Roma", "New York", "Tokio", "Moscou"};
-    final JComboBox <String> lista_combobox = new JComboBox(ciudades);
+    final String ciudades[] = {"", "Roma", "New York", "Tokio", "Moscou"};
+    final JComboBox<String> lista_combobox = new JComboBox<String>(ciudades);
     JLabel etiqueta_azul = new JLabel("Where do you want to go?");
 
     public Cities_JCombo() {
 
-        setSize(600, 80);
+        setSize(550, 70);
         setTitle("Cities I would like to visit when the Pandemic is over");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         panel.add(etiqueta_roja);
         etiqueta_roja.setForeground(Color.red);
         lista_combobox.addActionListener(new Gestion_combobox());
@@ -33,6 +34,9 @@ public class Cities_JCombo extends JFrame {
             int indice = lista_combobox.getSelectedIndex();
             String aux = ciudades[indice];
             etiqueta_azul.setText(aux + " is selected.");
+            if (lista_combobox.getSelectedIndex() == 0) {
+                etiqueta_azul.setText("Nothing selected");
+            }
         }
     }
 }
