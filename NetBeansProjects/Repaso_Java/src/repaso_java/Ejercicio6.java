@@ -67,6 +67,7 @@ public class Ejercicio6 {
         System.out.println("¿Qué fila quieres ver?");
         int posicion_fila = teclado.nextInt();
         int resultado = 0;
+        System.out.println("--------------------------------------------------------------------");
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -75,6 +76,8 @@ public class Ejercicio6 {
         }
         System.out.println("--------------------------------------------------------------------");
         System.out.println("El valor es: " + resultado);
+        System.out.println("--------------------------------------------------------------------");
+
     }
 
     public static void Suma_total() {
