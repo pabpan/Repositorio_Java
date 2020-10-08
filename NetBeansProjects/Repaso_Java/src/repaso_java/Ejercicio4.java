@@ -17,7 +17,6 @@ public class Ejercicio4 {
         for (int i = 1; i <= a; i++) {
             
             System.out.println(i + "\t" + i*2 + "\t" + i*3);
-            
         }
         System.out.println("");
     }

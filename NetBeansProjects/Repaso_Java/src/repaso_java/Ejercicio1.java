@@ -11,7 +11,7 @@ public class Ejercicio1 {
         double tasa;
         String usuario;
 
-        System.out.println("Alcohol:");
+        System.out.println("Tasa de Alcohol:");
         tasa = teclado.nextDouble();
         teclado.nextLine();
         System.out.println("¿Es usuario ciclista? SI|NO");
