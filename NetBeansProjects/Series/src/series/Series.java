@@ -4,6 +4,7 @@ import model.access;
 import model.listShow;
 import model.show;
 import view.frame;
+import controller.controller;
 
 public class Series {
 
@@ -22,7 +23,9 @@ public class Series {
 //        System.out.println(sh2.getTittle());
 //        System.out.println(sh2.getViews());
         
-        frame f = new frame();
+        controller control = new controller();
+    
+        frame f = new frame(control);
         f.setVisible(true);
     }
 
