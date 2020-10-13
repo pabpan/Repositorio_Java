@@ -22,7 +22,7 @@ public class listShow implements Serializable {
         seriesList.add(s);      
     }
 
-    public int longitud() {
+    public int lenght() {
         
         return seriesList.size();       
     }

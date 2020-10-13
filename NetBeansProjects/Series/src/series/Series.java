@@ -1,8 +1,5 @@
 package series;
 
-import model.access;
-import model.listShow;
-import model.show;
 import view.frame;
 import controller.controller;
 

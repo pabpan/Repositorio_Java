@@ -79,6 +79,12 @@ public class frame extends JFrame {
         t5.setEditable(false);
         panel2.add(e5);
         panel2.add(t5);
+        
+        e6 = new JLabel("");
+        t6 = new JTextField(50);
+        t6.setEditable(false);
+        panel2.add(e6);
+
 
         add(panel1);
     }
@@ -92,10 +98,57 @@ public class frame extends JFrame {
             if (e.getSource() == b1) {
                 s = c.first();
             }
+            if (e.getSource() == b2) {
+                s = c.previous();
+            }
+            if (e.getSource() == b3) {
+                s = c.next();
+            }
+            if (e.getSource() == b5) {
+                if (b5.getText().equals("+")) {
+                    t1.setText("");
+                    t2.setText("");
+                    t3.setText("");
+                    t4.setText("");
+                    t5.setText("");
+                    t6.setText("");
+                    
+                    b1.setEnabled(false);
+                    b2.setEnabled(false);
+                    b3.setEnabled(false);
+                    b4.setEnabled(false);
+                    b6.setEnabled(false);
+                    b7.setEnabled(false);
+
+                    t1.setEditable(true);
+                    t2.setEditable(true);
+                    t3.setEditable(true);
+                    t4.setEditable(true);
+                    t5.setEditable(true);
+                    t6.setEditable(true);
+                } else {
+                    b1.setEnabled(true);
+                    b2.setEnabled(true);
+                    b3.setEnabled(true);
+                    b4.setEnabled(true);
+                    b6.setEnabled(true);
+                    b7.setEnabled(true);
+
+                    b5.setText("+");
+                    s = fillShow();
+                    c.nuevo(s);
+                }
+                b5.setText("+++");
+            }
             updating(s);
         }
-        
-        private void updating (show s) {
+
+        private show fillShow() {
+            show s = new show(t1.getText(), t2.getText(), Integer.parseInt(t3.getText()), t4.getText(), Integer.parseInt(t5.getText()));
+            return s;
+        }
+
+        private void updating(show s) {
             t1.setText(s.getTittle());
             t2.setText(s.getScriptwriter());
             t3.setText(String.valueOf(s.getSeasons()));
