@@ -14,6 +14,8 @@ public class frame extends JFrame {
     private JButton b1, b2, b3, b4, b5, b6, b7;
     private JLabel e1, e2, e3, e4, e5, e6;
     private JTextField t1, t2, t3, t4, t5, t6;
+    private final JComboBox JComboBox_plataformas = new JComboBox(plataformas);
+    private static String plataformas[] = {"Netflix", "HBO", "Amazon Prime"};
     private controller c = null;
 
     public frame(controller control) {
@@ -79,12 +81,12 @@ public class frame extends JFrame {
         t5.setEditable(false);
         panel2.add(e5);
         panel2.add(t5);
-        
-        e6 = new JLabel("");
+
+        e6 = new JLabel("Plataforma");
         t6 = new JTextField(50);
         t6.setEditable(false);
         panel2.add(e6);
-
+        panel2.add(t6);
 
         add(panel1);
     }
@@ -112,7 +114,7 @@ public class frame extends JFrame {
                     t4.setText("");
                     t5.setText("");
                     t6.setText("");
-                    
+
                     b1.setEnabled(false);
                     b2.setEnabled(false);
                     b3.setEnabled(false);
@@ -125,7 +127,13 @@ public class frame extends JFrame {
                     t3.setEditable(true);
                     t4.setEditable(true);
                     t5.setEditable(true);
-                    t6.setEditable(true);
+                    t6.setEditable(false);
+                    t6.setVisible(false);
+
+                    b5.setText("+++");
+                    JComboBox_plataformas.addActionListener(new Gestion_combobox());
+                    panel2.add(JComboBox_plataformas);
+
                 } else {
                     b1.setEnabled(true);
                     b2.setEnabled(true);
@@ -133,18 +141,19 @@ public class frame extends JFrame {
                     b4.setEnabled(true);
                     b6.setEnabled(true);
                     b7.setEnabled(true);
+                    t6.setVisible(true);
+                    JComboBox_plataformas.setVisible(false);
 
                     b5.setText("+");
                     s = fillShow();
                     c.nuevo(s);
                 }
-                b5.setText("+++");
             }
             updating(s);
         }
 
         private show fillShow() {
-            show s = new show(t1.getText(), t2.getText(), Integer.parseInt(t3.getText()), t4.getText(), Integer.parseInt(t5.getText()));
+            show s = new show(t1.getText(), t2.getText(), Integer.parseInt(t3.getText()), t4.getText(), Integer.parseInt(t5.getText()), t6.getText());
             return s;
         }
 
@@ -154,6 +163,26 @@ public class frame extends JFrame {
             t3.setText(String.valueOf(s.getSeasons()));
             t4.setText(s.getGenre());
             t5.setText(String.valueOf(s.getViews()));
+            t6.setText(s.getPlataforma());
         }
+    }
+
+    private class Gestion_combobox implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            int indice = JComboBox_plataformas.getSelectedIndex();
+            String aux = plataformas[indice];
+            if (JComboBox_plataformas.getSelectedIndex() == 0) {
+                t6.setText("Netflix");
+            }
+            if (JComboBox_plataformas.getSelectedIndex() == 1) {
+                t6.setText("HBO");
+            }
+            if (JComboBox_plataformas.getSelectedIndex() == 2) {
+                t6.setText("Amazon Prime");
+            }
+        }
+
     }
 }
