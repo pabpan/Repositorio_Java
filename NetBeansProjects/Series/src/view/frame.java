@@ -4,6 +4,7 @@ import controller.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import model.listShow;
 import model.show;
 
 public class frame extends JFrame {
@@ -21,8 +22,8 @@ public class frame extends JFrame {
     public frame(controller control) {
 
         c = control;
-        setSize(500, 300);
-        setTitle("My series");
+        setSize(600, 300);
+        setTitle("Pablo's Series Library");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         panel1.setLayout(new BorderLayout());
@@ -33,19 +34,22 @@ public class frame extends JFrame {
 
         buttonListener manejar_botones = new buttonListener();
 
-        b1 = new JButton("|<");
+        show s2 = new show();
+        s2 = c.first();
+
+        b1 = new JButton("First");
         b1.addActionListener(manejar_botones);
-        b2 = new JButton("<");
+        b2 = new JButton("Previous");
         b2.addActionListener(manejar_botones);
-        b3 = new JButton(">");
+        b3 = new JButton("Next");
         b3.addActionListener(manejar_botones);
-        b4 = new JButton(">|");
+        b4 = new JButton("Last");
         b4.addActionListener(manejar_botones);
-        b5 = new JButton("+");
+        b5 = new JButton("New");
         b5.addActionListener(manejar_botones);
-        b6 = new JButton("-");
+        b6 = new JButton("Remove");
         b6.addActionListener(manejar_botones);
-        b7 = new JButton("*");
+        b7 = new JButton("Modify");
         b7.addActionListener(manejar_botones);
         panel3.add(b1);
         panel3.add(b2);
@@ -59,32 +63,40 @@ public class frame extends JFrame {
         e1 = new JLabel("Title");
         t1 = new JTextField(50);
         t1.setEditable(false);
+        t1.setText(s2.getTittle());
         panel2.add(e1);
         panel2.add(t1);
         e2 = new JLabel("Screenwriter");
         t2 = new JTextField(50);
         t2.setEditable(false);
+        t2.setText(s2.getScriptwriter());
         panel2.add(e2);
         panel2.add(t2);
         e3 = new JLabel("Season");
         t3 = new JTextField(50);
         t3.setEditable(false);
+        int seasons = s2.getSeasons();
+        t3.setText(String.valueOf(seasons));    
         panel2.add(e3);
         panel2.add(t3);
         e4 = new JLabel("Genre");
         t4 = new JTextField(50);
         t4.setEditable(false);
+        t4.setText(s2.getGenre());
         panel2.add(e4);
         panel2.add(t4);
         e5 = new JLabel("Seen seasons");
         t5 = new JTextField(50);
         t5.setEditable(false);
+        int views = s2.getViews();
+        t5.setText(String.valueOf(views));
         panel2.add(e5);
         panel2.add(t5);
 
         e6 = new JLabel("Plataforma");
         t6 = new JTextField(50);
         t6.setEditable(false);
+        t6.setText(s2.getPlataforma());
         panel2.add(e6);
         panel2.add(t6);
 
@@ -97,6 +109,7 @@ public class frame extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             show s = new show();
+
             if (e.getSource() == b1) {
                 s = c.first();
             }
@@ -107,7 +120,7 @@ public class frame extends JFrame {
                 s = c.next();
             }
             if (e.getSource() == b5) {
-                if (b5.getText().equals("+")) {
+                if (b5.getText().equals("New")) {
                     t1.setText("");
                     t2.setText("");
                     t3.setText("");
@@ -128,27 +141,91 @@ public class frame extends JFrame {
                     t4.setEditable(true);
                     t5.setEditable(true);
                     t6.setEditable(false);
-                    t6.setVisible(false);
 
-                    b5.setText("+++");
+                    b5.setText("Save");
+                    JComboBox_plataformas.setVisible(true);
+                    JComboBox_plataformas.setEnabled(true);
                     JComboBox_plataformas.addActionListener(new Gestion_combobox());
                     panel2.add(JComboBox_plataformas);
 
                 } else {
+                    t1.setEditable(false);
+                    t2.setEditable(false);
+                    t3.setEditable(false);
+                    t4.setEditable(false);
+                    t5.setEditable(false);
+                    t6.setEditable(false);
+
                     b1.setEnabled(true);
                     b2.setEnabled(true);
                     b3.setEnabled(true);
                     b4.setEnabled(true);
+                    b5.setEnabled(true);
                     b6.setEnabled(true);
                     b7.setEnabled(true);
-                    t6.setVisible(true);
-                    JComboBox_plataformas.setVisible(false);
 
-                    b5.setText("+");
+                    b5.setText("New");
                     s = fillShow();
                     c.nuevo(s);
+                    JComboBox_plataformas.setVisible(false);
                 }
             }
+            if (e.getSource() == b4) {
+                s = c.last();
+            }
+            if (e.getSource() == b6) {
+                c.delete();
+                s = c.previous();
+            }
+            if (e.getSource() == b7) {
+                if (b7.getText().equals("Modify")) {
+
+                    s = fillShow();
+
+                    t1.setEditable(true);
+                    t2.setEditable(true);
+                    t3.setEditable(true);
+                    t4.setEditable(true);
+                    t5.setEditable(true);
+                    t6.setEditable(false);
+
+                    b1.setEnabled(false);
+                    b2.setEnabled(false);
+                    b3.setEnabled(false);
+                    b4.setEnabled(false);
+                    b5.setEnabled(false);
+                    b6.setEnabled(false);
+                    b7.setEnabled(true);
+                    b7.setText("Save");
+
+                    JComboBox_plataformas.setEnabled(true);
+                    JComboBox_plataformas.setVisible(true);
+                    JComboBox_plataformas.addActionListener(new Gestion_combobox());
+                    panel2.add(JComboBox_plataformas);
+
+                } else {
+                    t1.setEditable(false);
+                    t2.setEditable(false);
+                    t3.setEditable(false);
+                    t4.setEditable(false);
+                    t5.setEditable(false);
+                    t6.setEditable(false);
+
+                    b1.setEnabled(true);
+                    b2.setEnabled(true);
+                    b3.setEnabled(true);
+                    b4.setEnabled(true);
+                    b5.setEnabled(true);
+                    b6.setEnabled(true);
+                    b7.setEnabled(true);
+                    b7.setText("Modify");
+                    s = fillShow();
+                    c.nuevo(s);
+                    JComboBox_plataformas.setEnabled(false);
+                    JComboBox_plataformas.setVisible(false);
+                }
+            }
+
             updating(s);
         }
 

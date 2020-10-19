@@ -80,6 +80,5 @@ public class show implements Serializable{
         this.genre = genre;
         this.views = views;
         this.plataforma = plataforma;       
-    }
-    
+    }    
 }
