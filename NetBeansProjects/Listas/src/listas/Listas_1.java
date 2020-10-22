@@ -9,8 +9,10 @@ public class Listas_1 extends JFrame {
     private JPanel panel_izquierda = new JPanel();
     private JPanel panel_centro = new JPanel();
     private JPanel panel_derecha = new JPanel();
-    private JTextField jtextfield_izquierda = new JTextField();
-    private JTextField jtextfield_derecha = new JTextField();
+    private JList jlist_izquierda = new JList();
+    private final String nombre_colores[] = {"Red", "Blue", "Green", "Pink", "Black", "Cyan"};
+    private JList jlist_derecha = new JList();
+    private final String nombre_colores_2[] = {"Red", "Blue", "Green", "Pink", "Black", "Cyan"};
     private JButton boton_superior = new JButton(">>>");
     private JButton boton_medio = new JButton("<<<");
     private JButton boton_inferior = new JButton("PRINT");
@@ -18,11 +20,12 @@ public class Listas_1 extends JFrame {
     public Listas_1() {
 
         setTitle("JList Example");
-        setSize(800, 600);
-        add(panel_global);
+        setSize(300, 200);
 
-        panel_izquierda.setLayout(new BorderLayout());
-        panel_izquierda.add(jtextfield_izquierda);
+        panel_global.setLayout(new BorderLayout());
+
+        jlist_izquierda = new JList(nombre_colores);
+        panel_izquierda.add(jlist_izquierda);
 
         GridLayout layout_botones = new GridLayout(3, 1, 10, 10);
         panel_centro.setLayout(layout_botones);
@@ -30,14 +33,15 @@ public class Listas_1 extends JFrame {
         panel_centro.add(boton_medio);
         panel_centro.add(boton_inferior);
 
-        panel_derecha.setLayout(new BorderLayout());
-        panel_derecha.add(jtextfield_derecha);
+        jlist_derecha = new JList(nombre_colores_2);
+        panel_derecha.add(jlist_derecha);
 
         panel_global.add(panel_izquierda, BorderLayout.WEST);
         panel_global.add(panel_centro, BorderLayout.CENTER);
         panel_global.add(panel_derecha, BorderLayout.EAST);
 
-        
+        add(panel_global);
+
     }
 
 }
