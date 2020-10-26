@@ -1,8 +1,10 @@
 package listas;
 
+import java.sql.SQLException;
+
 public class Principal {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         //Listas lista1 = new Listas();
         //lista1.setVisible(true);
