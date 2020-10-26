@@ -1,15 +1,13 @@
 package listas;
 
-import java.sql.SQLException;
-
 public class Principal {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
 
         //Listas lista1 = new Listas();
         //lista1.setVisible(true);
         
-        Listas_1 lista2 = new Listas_1();
+        FrameList lista2 = new FrameList();
         lista2.setVisible(true);
     }
 }
