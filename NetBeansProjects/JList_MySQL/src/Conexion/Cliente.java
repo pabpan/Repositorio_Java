@@ -1,11 +1,11 @@
-package listas;
+package Conexion;
 
-public class client {
+public class Cliente {
 
     private String id;
     private String notes;
 
-    public client() {
+    public Cliente() {
         this.id = "";
         this.notes = "";
     }
