@@ -95,10 +95,14 @@ public class Frame_JList_MySQL extends JFrame {
                 try {
                     JTextArea text = new JTextArea();
                     text.append("Lista de clientes seleccionados para imprimir: \n");
-                    text.append("ID: ");
-                    text.append(listmodel_derecha.toString() + "\n");
-                    text.append("NOTAS: ");
-                    //VOY POR AQUÍ
+                    Cliente cliente_aux;
+                    Object[] array_aux = listmodel_derecha.toArray();
+
+                    for (int i = 0; i < array_aux.length; i++) {
+                        cliente_aux = (Cliente) array_aux[i];
+                        text.append("ID: " + cliente_aux.getId() + "\n");                      
+                        text.append("NOTAS: " + cliente_aux.getNotes() + "\n\n");                      
+                    }
                     
                     boolean ok = text.print();
                     if (ok) {
