@@ -3,6 +3,7 @@ package Interfaz;
 import Conexion.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.print.*;
 import java.sql.*;
 import java.util.*;
 
@@ -72,6 +73,7 @@ public class Frame_JList_MySQL extends JFrame {
         } catch (Exception e) {
         }
 
+        //BOTÓN PARA PASAR DE IZQUIERDA A DERECHA
         boton_superior.addActionListener((ActionEvent e) -> {
             int index = jlist_izquierda.getSelectedIndex();
             if (index >= 0) {
@@ -80,6 +82,7 @@ public class Frame_JList_MySQL extends JFrame {
             }
         });
 
+        //BOTÓN PARA PASAR DE DERECHA A IZQUIERDA
         boton_medio.addActionListener((ActionEvent e) -> {
             int index = jlist_derecha.getSelectedIndex();
             if (index >= 0) {
@@ -88,13 +91,14 @@ public class Frame_JList_MySQL extends JFrame {
             }
         });
 
+        //BOTÓN PARA IMPRIMIR
         boton_inferior.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
 
                 try {
                     JTextArea text = new JTextArea();
-                    text.append("Lista de clientes seleccionados para imprimir: \n");
+                    text.append("Lista de clientes seleccionados para imprimir: \n\n");
                     Cliente cliente_aux;
                     Object[] array_aux = listmodel_derecha.toArray();
 
@@ -110,8 +114,7 @@ public class Frame_JList_MySQL extends JFrame {
                     } else {
                         System.out.println("¡¡OPERACIÓN CANCELADA!!");
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (PrinterException e) {
                 }
             }
         }
