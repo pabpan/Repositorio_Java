@@ -45,10 +45,8 @@ public class Frame_JList_MySQL extends JFrame {
         jlist_izquierda = new JList(listmodel_izquierda);
         jlist_derecha = new JList(listmodel_derecha);
 
-        jlist_izquierda.setFixedCellHeight(20);
-        jlist_izquierda.setFixedCellWidth(50);
-        jlist_derecha.setFixedCellHeight(20);
-        jlist_derecha.setFixedCellWidth(50);
+        jlist_izquierda.setFixedCellWidth(100);
+        jlist_derecha.setFixedCellWidth(100);
 
         panel_izquierda.add(new JScrollPane(jlist_izquierda));
         panel_derecha.add(new JScrollPane(jlist_derecha));
