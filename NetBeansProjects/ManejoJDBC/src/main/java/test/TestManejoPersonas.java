@@ -9,7 +9,7 @@ public class TestManejoPersonas {
 
     public static void main(String[] args) throws SQLException {
         personaDAO personaDao = new personaDAO();
-        List<Persona> personas = personaDao.seleccionar();
+        List<Persona> personas;
         
         //CREAR NUEVO REGISTRO
         //Persona personaNueva = new Persona("Paco", "Pérez", 34);
