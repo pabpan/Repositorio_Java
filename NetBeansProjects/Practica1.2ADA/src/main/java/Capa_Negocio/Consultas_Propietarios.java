@@ -10,6 +10,7 @@ import Capa_Datos.Conexion;
 import Capa_Datos.Propietarios;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.*;
 
 public class Consultas_Propietarios {
 
@@ -22,7 +23,7 @@ public class Consultas_Propietarios {
         /************ SELECCIONAR ***********/
         /************************************/
     
-    public List<Propietarios> seleccionar() throws SQLException {
+    public List<Propietarios> seleccionar() {
 
         /*Cremos una lista de propietarios vacía*/
         List<Propietarios> lista_propietarios = new ArrayList<>();
@@ -54,10 +55,15 @@ public class Consultas_Propietarios {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            /*Cerramos las conexiones*/
-            Conexion.Cerrar_Conexion(conectar);
-            Conexion.Cerrar_RS(rs);
-            Conexion.Cerrar_STMT(stmt);
+            try {
+                /*Cerramos las conexiones*/
+                
+                Conexion.Cerrar_Conexion(conectar);
+                Conexion.Cerrar_RS(rs);
+                Conexion.Cerrar_STMT(stmt);
+            } catch (SQLException ex) {
+                Logger.getLogger(Consultas_Propietarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return lista_propietarios;
     }

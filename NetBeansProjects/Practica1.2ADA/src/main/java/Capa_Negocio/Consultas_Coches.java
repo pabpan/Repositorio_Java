@@ -6,7 +6,7 @@
  */
 package Capa_Negocio;
 
-import Capa_Datos.Coches;
+import Capa_Datos.*;
 import Capa_Datos.Conexion;
 import java.sql.*;
 import java.util.*;
@@ -179,7 +179,7 @@ public class Consultas_Coches {
         /***** SELECCIONAR POR USUARIO ******/
         /************************************/
     
-    public List<Coches> seleccionar_por_usuario() throws SQLException {
+    public List<Coches> seleccionar_por_usuario(Propietarios propietario) throws SQLException {
 
         /*Instanciamos Conexión*/
         Connection conectar = null;
@@ -197,12 +197,16 @@ public class Consultas_Coches {
             conectar = Conexion.Realizar_Conexion();
             /*Le decimos qué tipo de consulta le pasamos al Statement*/
             stmt = conectar.prepareStatement(SQL_SELECT_1);
+            stmt.setString(1, propietario.getDNI());
             /*Al resultado le pasamos la consulta a ejecutar*/
             rs = stmt.executeQuery();
             /*Empieza el bucle dentro de la Consulta*/
             while (rs.next()) {
+                String matricula = rs.getString("Matricula");
+                String marca = rs.getString("Marca");
+                int precio = rs.getInt("Precio");
                 String dni = rs.getString("DNI");
-                coche_nuevo = new Coches(dni);
+                coche_nuevo = new Coches(matricula, marca, precio, dni);
                 lista_coches.add(coche_nuevo);
             }
         } catch (SQLException ex) {
