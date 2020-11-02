@@ -11,14 +11,14 @@ public class mainmiprimerframe {
 
 //        miprimerframe ventana = new miprimerframe();
 //        ventana.setVisible(true);
-//        Botones botones = new Botones();
-//        botones.setVisible(true);
+        Botones botones = new Botones();
+        botones.setVisible(true);
 //        Textos textos = new Textos();
 //        textos.setVisible(true);
 //        Labels label = new Labels();
 //        label.setVisible(true);
-        JtextField jtext = new JtextField();
-        jtext.setVisible(true);
+//        JtextField jtext = new JtextField();
+//        jtext.setVisible(true);
     }
 
 }
