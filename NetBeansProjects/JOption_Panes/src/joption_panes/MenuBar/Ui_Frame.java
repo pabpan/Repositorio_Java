@@ -15,6 +15,8 @@ public class Ui_Frame extends JFrame {
 
     public Ui_Frame() {
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         // MENU ITEMS:
         JMenuBar menuBar;
         JMenu menu;
