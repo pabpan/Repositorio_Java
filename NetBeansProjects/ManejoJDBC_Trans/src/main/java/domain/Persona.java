@@ -20,8 +20,8 @@ public class Persona {
         return id_cambio;
     }
 
-    public void setId_cambio(int id_Persona, int id_cambio) {
-        this.idPersona = id_cambio;
+    public void setId_cambio (int idPersona) {
+        this.idPersona = idPersona;
     }
 
     public Persona(int idPersona, int id_cambio) {

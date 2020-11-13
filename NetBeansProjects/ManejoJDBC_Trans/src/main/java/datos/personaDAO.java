@@ -119,7 +119,7 @@ public class personaDAO {
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_UPDATE_ID);
-            stmt.setInt(1, persona.getIdPersona());
+            stmt.setInt(1, persona.getId_cambio());
             stmt.setInt(2, persona.getIdPersona());
             registros = stmt.executeUpdate();
         } finally {

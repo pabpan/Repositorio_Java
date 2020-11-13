@@ -19,7 +19,8 @@ public class TestManejoPersonas {
                 //Ahora proporcionamos el objeto conexión para poder aplicar el concepto de transacción
                 personaDAO personaDao = new personaDAO(conexion);
                 Persona cambioPersona = new Persona();
-                cambioPersona.setId_cambio(3, 2);
+                cambioPersona.setIdPersona(5);
+                cambioPersona.setId_cambio(3);
 //                cambioPersona.setNombre("Karla");
 //                cambioPersona.setApellidos("Karly");
 //                cambioPersona.setEmail("Karla@iesserpis.com");
