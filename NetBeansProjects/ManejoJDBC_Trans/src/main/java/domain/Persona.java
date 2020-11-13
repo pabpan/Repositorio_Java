@@ -1,10 +1,13 @@
 package domain;
 
 public class Persona {
+
     private int idPersona;
     private String nombre;
     private String apellidos;
     private int edad;
+    private String Email;
+    private int id_cambio;
 
     public Persona() {
     }
@@ -13,10 +16,32 @@ public class Persona {
         this.idPersona = idPersona;
     }
 
-    public Persona(String nombre, String apellidos, int edad) {
+    public int getId_cambio() {
+        return id_cambio;
+    }
+
+    public void setId_cambio(int id_Persona, int id_cambio) {
+        this.idPersona = id_cambio;
+    }
+
+    public Persona(int idPersona, int id_cambio) {
+        this.idPersona = idPersona;
+        this.id_cambio = id_cambio;
+    }
+
+    public Persona(String nombre, String apellidos, int edad, String Email) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
+        this.Email = Email;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public Persona(int idPersona, String nombre, String apellidos, int edad) {
@@ -62,7 +87,5 @@ public class Persona {
     public String toString() {
         return "Persona{" + "idPersona=" + idPersona + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + '}';
     }
-    
-    
-}
 
+}
