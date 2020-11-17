@@ -4,7 +4,7 @@
  * 2º DAM - DISEÑO DE INTERFACES
  * 
  */
-package com.connection;
+package Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,19 +4,18 @@
  * 2º DAM - DISEÑO DE INTERFACES
  * 
  */
-package com.encodeup.dao;
+package Datos_DAO;
 
 import java.sql.*;
 import java.util.*;
+import Conexion.Conexion;
+import Modelo.Cliente;
+import javax.swing.JOptionPane;
 
-import com.connection.Conexion;
-import com.encodeup.idao.IClienteDao;
-import com.encodeup.model.Cliente;
+public class ClienteDAO {
 
-public class ClienteDaoImpl implements IClienteDao {
-
-    @Override
     public boolean registrar(Cliente cliente) {
+
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
@@ -32,13 +31,11 @@ public class ClienteDaoImpl implements IClienteDao {
             stm.close();
             con.close();
         } catch (Exception e) {
-            System.out.println("Error: Clase ClienteDaoImple, método registrar");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de sql");
         }
         return registrar;
     }
 
-    @Override
     public List<Cliente> obtener() {
 
         Connection con = null;
@@ -72,7 +69,6 @@ public class ClienteDaoImpl implements IClienteDao {
         return lista_clientes;
     }
 
-    @Override
     public boolean actualizar(Cliente cliente) {
         boolean actualizar = false;
         Connection con = null;
@@ -94,19 +90,18 @@ public class ClienteDaoImpl implements IClienteDao {
         return actualizar;
     }
 
-    @Override
     public boolean eliminar(Cliente cliente) {
         boolean eliminar = false;
         Connection con = null;
         Statement stm = null;
 
-        String sql = "DELETE FROM CLIENTE WHERE Id_Cliente="+cliente.getId();
-        
+        String sql = "DELETE FROM CLIENTE WHERE Id_Cliente=" + cliente.getId();
+
         try {
-            con=Conexion.conectar();
-            stm=con.createStatement();
+            con = Conexion.conectar();
+            stm = con.createStatement();
             stm.execute(sql);
-            eliminar=true;
+            eliminar = true;
         } catch (Exception e) {
             System.out.println("Error: Clase ClienteDaoImple, método eliminar");
             e.printStackTrace();
@@ -114,5 +109,4 @@ public class ClienteDaoImpl implements IClienteDao {
 
         return eliminar;
     }
-
 }

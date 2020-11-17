@@ -4,7 +4,7 @@
  * 2º DAM - DISEÑO DE INTERFACES
  * 
  */
-package com.encodeup.model;
+package Modelo;
 
 public class Cliente {
 
