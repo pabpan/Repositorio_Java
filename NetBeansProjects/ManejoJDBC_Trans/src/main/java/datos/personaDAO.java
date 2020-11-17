@@ -10,7 +10,7 @@ public class personaDAO {
     private Connection conexionTransaccional;
 
     private static final String SQL_SELECT = "SELECT Id_persona, Nombre, Apellidos, Edad FROM persona";
-    private static final String SQL_INSERT = "INSERT INTO persona (Nombre, Apellidos, Edad) VALUES (?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO persona (Nombre, Apellidos, Email, Edad) VALUES (?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE persona SET Nombre=?, Apellidos=?, Email=?, Edad=? where Id_persona=?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE Id_persona=?";
     private static final String SQL_UPDATE_ID = "UPDATE persona SET Id_persona=? where Id_persona=?";
@@ -70,7 +70,9 @@ public class personaDAO {
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setString(1, persona.getNombre());
             stmt.setString(2, persona.getApellidos());
-            stmt.setInt(3, persona.getEdad());
+            stmt.setString(3, persona.getEmail());
+            stmt.setInt(4, persona.getEdad());
+
             registros = stmt.executeUpdate();
         } finally {
             try {
@@ -110,9 +112,9 @@ public class personaDAO {
         }
         return registros;
     }
-    
+
     //CAMBIAR ID
-    public int update_ID (Persona persona) throws SQLException {
+    public int update_ID(Persona persona) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;

@@ -29,7 +29,7 @@ public class Persona {
         this.id_cambio = id_cambio;
     }
 
-    public Persona(String nombre, String apellidos, int edad, String Email) {
+    public Persona(String nombre, String apellidos, String Email, int edad ) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
