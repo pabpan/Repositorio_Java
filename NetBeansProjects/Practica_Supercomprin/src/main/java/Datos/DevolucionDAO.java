@@ -50,7 +50,7 @@ public class DevolucionDAO {
                 int id_devolucion = rs.getInt("id_devolucion");
                 int id_wallet = rs.getInt("id_wallet");
                 int id_producto = rs.getInt("id_producto");
-                Date fecha_devolucion = rs.getDate("fecha_devoluciona");
+                Date fecha_devolucion = rs.getDate("fecha_devolucion");
                 devolucion_aux = new Devolucion(id_devolucion, id_wallet, id_producto, fecha_devolucion);
                 lista_devoluciones.add(devolucion_aux);
             }

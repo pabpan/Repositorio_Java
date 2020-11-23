@@ -59,6 +59,6 @@ public class Devolucion {
 
     @Override
     public String toString() {
-        return "Devolucion{" + "id_devolucion=" + id_devolucion + ", id_wallet=" + id_wallet + ", id_producto=" + id_producto + ", fecha_devolucion=" + fecha_devolucion + '}';
+        return "id_devolucion= " + id_devolucion + ", id_wallet= " + id_wallet + ", id_producto= " + id_producto + ", fecha_devolucion= " + fecha_devolucion + '.';
     }
 }
