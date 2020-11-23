@@ -8,7 +8,7 @@ package Vista;
 
 import Modelo.*;
 import java.awt.*;
-import java.awt.event.*;
+import Controlador.ControladorCRUD;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,6 +21,8 @@ public class VistaClientes extends JFrame {
     public JTextField texto_id, texto_nombre, texto_apellidos, texto_direccion, texto_localidad, texto_telefono, texto_buscar;
     public JButton boton_crear_usuario, boton_read_usuarios, boton_update_usuario, boton_delete_usuario, boton_ok; //BOTONES PANEL LATERAL
     public JTable tabla_datos = new JTable();
+    public JTable tabla_datos_aux = new JTable();
+
     public String columnas[] = {"Id", "Nombre", "Apellidos", "Dirección", "Localidad", "Teléfono"};
     public DefaultTableModel modelo_de_tabla = new DefaultTableModel(columnas, 0);
     public Modelo.DAOCliente dao = new DAOCliente();
@@ -67,6 +69,7 @@ public class VistaClientes extends JFrame {
         panel_datos_inferior.add(etiqueta_localidad);
         panel_datos_inferior.add(etiqueta_telefono);
         panel_datos_inferior.add(texto_id);
+        texto_id.setEnabled(false);
         panel_datos_inferior.add(texto_nombre);
         panel_datos_inferior.add(texto_apellidos);
         panel_datos_inferior.add(texto_direccion);

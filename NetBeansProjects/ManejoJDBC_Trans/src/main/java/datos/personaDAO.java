@@ -18,8 +18,6 @@ public class personaDAO {
     public personaDAO() {
     }
 
-    ;
-
     public personaDAO(Connection conexionTransaccional) {
         try {
             this.conexionTransaccional = conexionTransaccional;

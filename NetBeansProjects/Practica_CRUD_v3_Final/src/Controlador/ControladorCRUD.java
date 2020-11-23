@@ -94,14 +94,14 @@ public class ControladorCRUD implements ActionListener, KeyListener {
 
         try {
             if (e.getSource() == vistaCRUD.boton_crear_usuario) {
-                String id = vistaCRUD.texto_id.getText();
+//                String id = vistaCRUD.texto_id.getText();
                 String nombre = vistaCRUD.texto_nombre.getText();
                 String apellidos = vistaCRUD.texto_apellidos.getText();
                 String direccion = vistaCRUD.texto_direccion.getText();
                 String localidad = vistaCRUD.texto_localidad.getText();
                 String telefono = vistaCRUD.texto_telefono.getText();
 
-                String respuesta_Registro = modeloCRUD.insertar_cliente(Integer.parseInt(id), nombre, apellidos, direccion, localidad, Integer.parseInt(telefono));
+                String respuesta_Registro = modeloCRUD.insertar_cliente(nombre, apellidos, direccion, localidad, Integer.parseInt(telefono));
 
                 if (respuesta_Registro != null) {
                     JOptionPane.showMessageDialog(null, respuesta_Registro);
@@ -162,6 +162,7 @@ public class ControladorCRUD implements ActionListener, KeyListener {
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar una fila o al menos una");
             }
+            
         }
 
         //BOTON REALIZAR CAMBIOS
@@ -214,6 +215,7 @@ public class ControladorCRUD implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent arg0) {
         if (arg0.getSource() == vistaCRUD.texto_buscar) {
             String apellidos = vistaCRUD.texto_buscar.getText();
+
             DefaultTableModel modelo_tabla = new DefaultTableModel();
             vistaCRUD.tabla_datos.setModel(modelo_tabla);
             modelo_tabla.addColumn("ID");
@@ -236,13 +238,15 @@ public class ControladorCRUD implements ActionListener, KeyListener {
                 columna[5] = modeloCRUD.buscar_cliente_por_apellido(apellidos).get(i).getTelefono();
                 modelo_tabla.addRow(columna);
             }
+            vistaCRUD.tabla_datos_aux.setModel(modelo_tabla);
+            LLenarTabla(vistaCRUD.tabla_datos_aux);
 
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(0).setPreferredWidth(20);
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(1).setPreferredWidth(60);
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(2).setPreferredWidth(100);
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(3).setPreferredWidth(200);
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(4).setPreferredWidth(60);
-            vistaCRUD.tabla_datos.getColumnModel().getColumn(5).setPreferredWidth(60);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(0).setPreferredWidth(20);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(1).setPreferredWidth(60);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(2).setPreferredWidth(100);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(3).setPreferredWidth(200);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(4).setPreferredWidth(60);
+            vistaCRUD.tabla_datos_aux.getColumnModel().getColumn(5).setPreferredWidth(60);
         }
     }
 

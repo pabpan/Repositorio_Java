@@ -16,7 +16,6 @@ public class Productor implements Runnable {
         while (true) {
             try {
                 Thread.sleep(4000);
-
                 synchronized (productos) {
                     productos.add("Producto");
                     System.out.println("Producto agregado a la lista");

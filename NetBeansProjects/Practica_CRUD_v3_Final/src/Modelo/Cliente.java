@@ -18,8 +18,7 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public Cliente(int id, String nombre, String apellidos, String direccion, String localidad, int telefono) {
-        this.id = id;
+    public Cliente(String nombre, String apellidos, String direccion, String localidad, int telefono) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.direccion = direccion;

@@ -19,25 +19,24 @@ public class DAOCliente {
         conexion = new Conexion();
     }
 
-    public String insertar_cliente(int id, String nombre, String apellidos, String direccion, String localidad, int telefono) {
+    public String insertar_cliente(String nombre, String apellidos, String direccion, String localidad, int telefono) {
 
         String respuesta_registro = null;
 
         Connection con = null;
         PreparedStatement pst;
 
-        String sql = "INSERT INTO CLIENTE VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CLIENTE VALUES (null, ?, ?, ?, ?, ?)";
 
         try {
 
             con = Conexion.conectar();
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
-            pst.setString(2, nombre);
-            pst.setString(3, apellidos);
-            pst.setString(4, direccion);
-            pst.setString(5, localidad);
-            pst.setInt(6, telefono);
+            pst.setString(1, nombre);
+            pst.setString(2, apellidos);
+            pst.setString(3, direccion);
+            pst.setString(4, localidad);
+            pst.setInt(5, telefono);
 
             int filas = pst.executeUpdate();
 
@@ -128,8 +127,8 @@ public class DAOCliente {
         Cliente cliente;
         try {
             Connection acceder_BD = conexion.conectar();
-            CallableStatement cs = acceder_BD.prepareCall("{call sp_busca_por_apellidos(?)}");
-            ResultSet rs = cs.executeQuery();
+            PreparedStatement pst = acceder_BD.prepareStatement("SELECT * FROM CLIENTE where Apellido=?");
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 cliente = new Cliente();
                 cliente.setId(rs.getInt(1));
