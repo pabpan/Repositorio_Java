@@ -99,7 +99,7 @@ public class TestSuperComprin {
                 + "*** 7  Realizar compra              ***\n" 
                 + "*** 8  Consultar compras            ***\n"                 
                 + "*** 9  Realizar_Devolucion          ***\n"  
-                + "*** 10  Consultar devoluciones       ***\n"
+                + "*** 10 Consultar devoluciones       ***\n"
                 + "*** 11 Canjear puntos por productos ***\n" 
                 + "*** 12 Salir del programa           ***\n"
                 + "***************************************\n"                
@@ -236,7 +236,7 @@ public class TestSuperComprin {
                 System.out.println("LISTA DE WALLETS:");
                 System.out.println("---------------------------------------");                
                 for (int i = 0; i < lista_wallets.size(); i++) {
-                    System.out.println(lista_wallets.get(i));
+                    System.out.println("["+i+"] " + lista_wallets.get(i));
                     System.out.println("---------------------------------------");
                 }          
             } catch (SQLException ex) {
@@ -386,7 +386,7 @@ public class TestSuperComprin {
                 System.out.println("LISTA DE PRODUCTOS:");
                 System.out.println("---------------------------------------");                
                 for (int i = 0; i < lista_productos.size(); i++) {
-                    System.out.println(lista_productos.get(i));
+                    System.out.println("["+i+"] " + lista_productos.get(i));
                     System.out.println("---------------------------------------");
                 }
             } catch (SQLException ex) {
@@ -514,7 +514,7 @@ public class TestSuperComprin {
                 System.out.println("LISTA DE COMPRAS:");
                 System.out.println("---------------------------------------");                
                 for (int i = 0; i < lista_compras.size(); i++) {
-                    System.out.println(lista_compras.get(i));
+                    System.out.println("["+i+"] " + lista_compras.get(i));
                     System.out.println("---------------------------------------");
                 }            } 
             catch (SQLException ex) {
@@ -645,7 +645,7 @@ public class TestSuperComprin {
                 System.out.println("LISTA DE DEVOLUCIONES:");
                 System.out.println("---------------------------------------");               
                 for (int i = 0; i < lista_devoluciones.size(); i++) {
-                    System.out.println(lista_devoluciones.get(i));
+                    System.out.println("["+i+"] " + lista_devoluciones.get(i));
                     System.out.println("---------------------------------------");
                 }                 
                 if (lista_devoluciones.isEmpty()) {
