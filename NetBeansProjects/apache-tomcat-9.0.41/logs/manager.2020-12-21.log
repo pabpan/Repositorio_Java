@@ -1,0 +1,12 @@
+21-Dec-2020 11:00:05.934 INFORMACIÓN [http-nio-8084-exec-4] org.apache.catalina.core.ApplicationContext.log Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+21-Dec-2020 11:00:05.934 INFORMACIÓN [http-nio-8084-exec-4] org.apache.catalina.core.ApplicationContext.log Manager: init: Global resources are available
+21-Dec-2020 11:00:06.133 INFORMACIÓN [http-nio-8084-exec-10] org.apache.catalina.core.ApplicationContext.log Manager: list: Listing contexts for virtual host 'localhost'
+21-Dec-2020 11:00:06.211 INFORMACIÓN [http-nio-8084-exec-3] org.apache.catalina.core.ApplicationContext.log Manager: list: Listing contexts for virtual host 'localhost'
+21-Dec-2020 11:00:06.273 INFORMACIÓN [http-nio-8084-exec-9] org.apache.catalina.core.ApplicationContext.log Manager: undeploy: Undeploying web application at '/AgendaWebJPA'
+21-Dec-2020 11:00:06.885 INFORMACIÓN [http-nio-8084-exec-10] org.apache.catalina.core.ApplicationContext.log Manager: install: Installing context configuration at 'file:/tmp/context4744205441877365967.xml'
+21-Dec-2020 11:00:08.337 INFORMACIÓN [http-nio-8084-exec-12] org.apache.catalina.core.ApplicationContext.log Manager: start: Starting web application '/AgendaWebJPA'
+21-Dec-2020 11:00:09.132 INFORMACIÓN [http-nio-8084-exec-11] org.apache.catalina.core.ApplicationContext.log Manager: list: Listing contexts for virtual host 'localhost'
+21-Dec-2020 11:00:09.198 INFORMACIÓN [http-nio-8084-exec-6] org.apache.catalina.core.ApplicationContext.log Manager: list: Listing contexts for virtual host 'localhost'
+21-Dec-2020 11:00:09.259 INFORMACIÓN [http-nio-8084-exec-3] org.apache.catalina.core.ApplicationContext.log Manager: undeploy: Undeploying web application at '/AgendaWebJPA'
+21-Dec-2020 11:00:09.854 INFORMACIÓN [http-nio-8084-exec-8] org.apache.catalina.core.ApplicationContext.log Manager: install: Installing context configuration at 'file:/tmp/context625004136473004332.xml'
+21-Dec-2020 11:00:12.020 INFORMACIÓN [http-nio-8084-exec-4] org.apache.catalina.core.ApplicationContext.log Manager: start: Starting web application '/AgendaWebJPA'

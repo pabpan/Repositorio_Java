@@ -10,7 +10,7 @@ public class GestionContactos {
     static Logger log = LogManager.getFormatterLogger();
 
     public static void altaContacto(String nombre, String email, int telefono) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -27,7 +27,7 @@ public class GestionContactos {
     }
 
     public void eliminarContacto(int idcontacto) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -45,7 +45,7 @@ public class GestionContactos {
 
     public List<Contacto> recuperarContactos() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -66,7 +66,7 @@ public class GestionContactos {
 
     public Contacto buscarContacto2(String email) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 

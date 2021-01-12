@@ -40,7 +40,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
-			<h1>No hay contactos</h1>
+			<h1>No hay wallets</h1>
 		</c:otherwise>
 	</c:choose>
 	<br/>

@@ -5,8 +5,9 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd" version="2.2">
 
-    <persistence-unit name="ContactoPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="WebPU" transaction-type="RESOURCE_LOCAL">
         <class>mx.com.gm.sga.domain.Contacto</class>
+        <class>mx.com.gm.sga.domain.Usuario</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/agenda?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/> />
             <property name="javax.persistence.jdbc.user" value="root" />

@@ -1,0 +1,15 @@
+/* AUTOMATICALLY GENERATED ON Tue Jan 12 09:44:13 CET 2021*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebResourcePermission "/";
+  permission javax.security.jacc.WebUserDataPermission "/";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "mx.com.gm.sga.pruebaglassfish.JAXRSConfiguration", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+};
+
