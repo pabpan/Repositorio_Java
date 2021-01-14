@@ -26,15 +26,36 @@ public class Controller extends HttpServlet {
         String op = request.getParameter("op");
         String url = "";
         switch (op) {
-            case "doAlta":
-                url = "AltaAction";
+            case "AltaWallet":
+                url = "AltaWallet";
                 break;
-            case "doEliminar":
-                url = "EliminarAction";
+            case "AltaProducto":
+                url = "AltaProducto";
+                break;     
+            case "RealizarCompra":
+                url = "RealizarCompra";
                 break;
+            case "RealizarDevolucion":
+                url = "RealizarDevolucion";
+                break;                 
             case "RecuperarWallets":
-                url = "RecuperarAction";
+                url = "RecuperarWallets";
                 break;
+            case "RecuperarProductos":
+                url = "RecuperarProductos";
+                break;  
+            case "RecuperarCompras":
+                url = "RecuperarCompras";
+                break; 
+            case "RecuperarDevoluciones":
+                url = "RecuperarDevoluciones";
+                break;  
+            case "EliminarWallet":
+                url = "EliminarWallet";
+                break;  
+            case "EliminarProducto":
+                url = "EliminarProducto";
+                break;                  
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

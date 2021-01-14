@@ -6,7 +6,7 @@
         <script type="text/javascript">
             function comprobar() {
                 if (validarDatos()) {
-                    return true;                    
+                    return true;
                 } else {
                     alert("Falta algún valor");
                     return false;
@@ -16,27 +16,34 @@
                 nombre = document.getElementById("nombre").value;
                 apellidos = document.getElementById("apellidos").value;
                 DNI = document.getElementById("DNI").value;
-                fecha_nacimiento = document.getElementById("fechana_cimiento").value;
+                fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
                 email = document.getElementById("email").value;
-                
-                return nombre!=="" && apellidos!=="" && DNI!=="" && fecha_nacimiento!=="" 
-                        && email!=="" && saldo_puntos!=="" && saldo_euros!=="";
+                saldo_puntos = document.getElementById("saldo_puntos").value;
+                saldo_euros = document.getElementById("saldo_euros").value;
+
+                return nombre !== "" && apellidos !== "" && DNI !== "" && fecha_nacimiento !== ""
+                        && email !== "" && saldo_puntos !== "" && saldo_euros !== "";
             }
         </script>
     </head>
     <body>
         <form action="Controller?op=AltaWallet" method="post" onsubmit="return comprobar();">
-            nombre<input id="nombre" type="text" name="nombre"/>
+            Nombre<input id="nombre" type="text" name="nombre"/>
             <br/>
-            apellidos<input id="apellidos" type="text" name="apellidos"/>
+            Apellidos<input id="apellidos" type="text" name="apellidos"/>
             <br/>
-            dni<input id="dni" type="text" name="dni"/>
+            Dni<input id="DNI" type="text" name="DNI"/>
             <br/>
-            fechanacimiento<input id="fechanacimiento" type="text" name="fechanacimiento"/>
+            Fecha de nacimiento<input id="fecha_nacimiento" type="text" name="fecha_nacimiento"/>
             <br/>
-            email<input id="email" type="text" name="email"/>
+            Email<input id="email" type="text" name="email"/>
             <br/>
+            Saldo de puntos<input id="saldo_puntos" type="text" name="saldo_puntos"/>
+            <br/>
+            Saldo de euros<input id="saldo_euros" type="text" name="saldo_euros"/>
+            <br/>            
             <input type="submit" value="Guardar"/>
         </form>
+
     </body>
 </html>

@@ -1,86 +1,87 @@
-//package Modelo;
-//
-//import java.util.List;
-//import javax.persistence.*;
-//import mx.com.gm.sga.domain.Contacto;
-//import org.apache.logging.log4j.*;
-//
-//public class GestionDevoluciones {
-//
-//    static Logger log = LogManager.getFormatterLogger();
-//
-//    public static void altaContacto(String nombre, String email, int telefono) {
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        Contacto contacto1 = new Contacto(nombre, email, telefono);
-//        log.debug("Objeto a insertar: " + contacto1);
-//        //Persistimos el objeto
-//        em.persist(contacto1);
-//        //Terminamos la transaccion
-//        tx.commit();
-//        log.debug("Objeto insertado " + contacto1);
-//        em.close();
-//    }
-//
-//    public void eliminarContacto(int idcontacto) {
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        Contacto contacto1 = em.find(Contacto.class, idcontacto);
-//        log.debug("Objeto a borrar: " + contacto1);
-//        //Borramos el objeto
-//        em.remove(contacto1);
-//        //Terminamos la transaccion
-//        tx.commit();
-//        log.debug("Objeto borrado " + contacto1);
-//        em.close();
-//    }
-//
-//    public List<Contacto> recuperarContactos() {
-//
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        String jpql = "Select c from Contacto c";
-//        Query qr = em.createQuery(jpql);
-//        List<Contacto> contactos = (List<Contacto>) qr.getResultList();
-//        //Terminamos la transaccion
-//        tx.commit();
-//        for (int i = 0; i < contactos.size(); i++) {
-//            Contacto aux = contactos.get(i);
-//            log.debug("Contacto: " + contactos);
-//        }
-//        em.close();
-//        return contactos;
-//    }
-//
-//    public Contacto buscarContacto2(String email) {
-//
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        String jpql = "Select c from Contacto c where email='" + email + "'";
-//        TypedQuery <Contacto> tq = em.createQuery(jpql, Contacto.class);
-//        Contacto contacto1 = new Contacto();
-//        contacto1 = tq.getSingleResult();
-//        
-//        //Termicontactosnamos la transaccion
-//        tx.commit();
-//        em.close();
-//
-//        return contacto1;
-//    }
-//}
+package Modelo;
+
+import java.sql.Date;
+import java.util.List;
+import javax.persistence.*;
+import mx.com.gm.sga.domain.Devolucion;
+import org.apache.logging.log4j.*;
+
+public class GestionDevoluciones {
+
+    static Logger log = LogManager.getFormatterLogger();
+
+    public static void realizar_Devolucion(int id_wallet, int id_producto, Date fecha_devolucion) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        Devolucion devolucion1 = new Devolucion(id_wallet, id_producto, fecha_devolucion);
+        log.debug("Devolucion a insertar: " + devolucion1);
+        //Persistimos el objeto
+        em.persist(devolucion1);
+        //Terminamos la transaccion
+        tx.commit();
+        log.debug("Devolución insertado " + devolucion1);
+        em.close();
+    }
+
+    public void eliminar_Devolucion(int id_devolucion) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        Devolucion devolucion1 = em.find(Devolucion.class, id_devolucion);
+        log.debug("Devolucion a borrar: " + devolucion1);
+        //Borramos el objeto
+        em.remove(devolucion1);
+        //Terminamos la transaccion
+        tx.commit();
+        log.debug("Devolucion borrado " + devolucion1);
+        em.close();
+    }
+
+    public List<Devolucion> recuperar_Devoluciones() {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        String jpql = "Select d from Devolucion d";
+        Query qr = em.createQuery(jpql);
+        List<Devolucion> devoluciones = (List<Devolucion>) qr.getResultList();
+        //Terminamos la transaccion
+        tx.commit();
+        for (int i = 0; i < devoluciones.size(); i++) {
+            Devolucion aux = devoluciones.get(i);
+            log.debug("Devolucion: " + devoluciones);
+        }
+        em.close();
+        return devoluciones;
+    }
+
+    public Devolucion buscar_Devolucion(int id_devolucion) {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        String jpql = "Select d from Devolucion d where c.id_devolucion=:id_devolucion";
+        TypedQuery <Devolucion> tq = em.createQuery(jpql, Devolucion.class);
+        Devolucion devolucion1 = new Devolucion();
+        devolucion1 = tq.getSingleResult();
+        
+        //Termicontactosnamos la transaccion
+        tx.commit();
+        em.close();
+
+        return devolucion1;
+    }
+}

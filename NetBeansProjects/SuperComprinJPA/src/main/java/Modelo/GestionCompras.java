@@ -1,86 +1,87 @@
-//package Modelo;
-//
-//import java.util.List;
-//import javax.persistence.*;
-//import mx.com.gm.sga.domain.Contacto;
-//import org.apache.logging.log4j.*;
-//
-//public class GestionCompras {
-//
-//    static Logger log = LogManager.getFormatterLogger();
-//
-//    public static void altaContacto(String nombre, String email, int telefono) {
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        Contacto contacto1 = new Contacto(nombre, email, telefono);
-//        log.debug("Objeto a insertar: " + contacto1);
-//        //Persistimos el objeto
-//        em.persist(contacto1);
-//        //Terminamos la transaccion
-//        tx.commit();
-//        log.debug("Objeto insertado " + contacto1);
-//        em.close();
-//    }
-//
-//    public void eliminarContacto(int idcontacto) {
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        Contacto contacto1 = em.find(Contacto.class, idcontacto);
-//        log.debug("Objeto a borrar: " + contacto1);
-//        //Borramos el objeto
-//        em.remove(contacto1);
-//        //Terminamos la transaccion
-//        tx.commit();
-//        log.debug("Objeto borrado " + contacto1);
-//        em.close();
-//    }
-//
-//    public List<Contacto> recuperarContactos() {
-//
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        String jpql = "Select c from Contacto c";
-//        Query qr = em.createQuery(jpql);
-//        List<Contacto> contactos = (List<Contacto>) qr.getResultList();
-//        //Terminamos la transaccion
-//        tx.commit();
-//        for (int i = 0; i < contactos.size(); i++) {
-//            Contacto aux = contactos.get(i);
-//            log.debug("Contacto: " + contactos);
-//        }
-//        em.close();
-//        return contactos;
-//    }
-//
-//    public Contacto buscarContacto2(String email) {
-//
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        //Iniciamos la transacción
-//        tx.begin();
-//        String jpql = "Select c from Contacto c where email='" + email + "'";
-//        TypedQuery <Contacto> tq = em.createQuery(jpql, Contacto.class);
-//        Contacto contacto1 = new Contacto();
-//        contacto1 = tq.getSingleResult();
-//        
-//        //Termicontactosnamos la transaccion
-//        tx.commit();
-//        em.close();
-//
-//        return contacto1;
-//    }
-//}
+package Modelo;
+
+import java.sql.Date;
+import java.util.List;
+import javax.persistence.*;
+import mx.com.gm.sga.domain.Compra;
+import org.apache.logging.log4j.*;
+
+public class GestionCompras {
+
+    static Logger log = LogManager.getFormatterLogger();
+
+    public static void alta_Compra(int id_wallet, int id_producto, Date fecha_compra) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        Compra compra1 = new Compra(id_wallet, id_producto, fecha_compra);
+        log.debug("Compra a insertar: " + compra1);
+        //Persistimos el objeto
+        em.persist(compra1);
+        //Terminamos la transaccion
+        tx.commit();
+        log.debug("Compra insertada " + compra1);
+        em.close();
+    }
+
+    public void eliminar_Compra(int id_compra) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        Compra compra1 = em.find(Compra.class, id_compra);
+        log.debug("Compra a borrar: " + compra1);
+        //Borramos el objeto
+        em.remove(compra1);
+        //Terminamos la transaccion
+        tx.commit();
+        log.debug("Compra borrada " + compra1);
+        em.close();
+    }
+
+    public List<Compra> recuperar_Compras() {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        String jpql = "Select c from Compra c";
+        Query qr = em.createQuery(jpql);
+        List<Compra> compras = (List<Compra>) qr.getResultList();
+        //Terminamos la transaccion
+        tx.commit();
+        for (int i = 0; i < compras.size(); i++) {
+            Compra aux = compras.get(i);
+            log.debug("Compra: " + compras);
+        }
+        em.close();
+        return compras;
+    }
+
+    public Compra buscar_Compra(int id_compra) {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistencia_SuperComprin");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        //Iniciamos la transacción
+        tx.begin();
+        String jpql = "Select c from Compra c where c.id_compra=:id_compra";
+        TypedQuery <Compra> tq = em.createQuery(jpql, Compra.class);
+        Compra compra1 = new Compra();
+        compra1 = tq.getSingleResult();
+        
+        //Termicontactosnamos la transaccion
+        tx.commit();
+        em.close();
+
+        return compra1;
+    }
+}

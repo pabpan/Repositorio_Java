@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 /**
  * Servlet implementation class AltaWallet
  */
-@WebServlet("/AltaAction")
-public class AltaAction extends HttpServlet {
+@WebServlet("/AltaWallet")
+public class AltaWallet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,9 +40,9 @@ public class AltaAction extends HttpServlet {
             java.sql.Date fecha_sql = new java.sql.Date(fecha_java.getDay(), fecha_java.getMonth(), fecha_java.getYear());            
             GestionWallets gestion_wallets = new GestionWallets();
             gestion_wallets.alta_Wallet(nombre, apellidos, DNI, fecha_sql, email, saldo_puntos, saldo_euros);
-            request.getRequestDispatcher("RecuperarAction").forward(request, response);
+            request.getRequestDispatcher("RecuperarWallets").forward(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(AltaAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AltaWallet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
