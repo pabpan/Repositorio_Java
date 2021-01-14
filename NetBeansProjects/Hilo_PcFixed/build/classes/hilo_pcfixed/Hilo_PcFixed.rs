@@ -1,4 +1,0 @@
-hilo_pcfixed.Q
-hilo_pcfixed.Producer
-hilo_pcfixed.PCFixed
-hilo_pcfixed.Consumer
